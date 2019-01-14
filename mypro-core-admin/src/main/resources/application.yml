@@ -1,0 +1,24 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: mypro-core-admin
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}:${spring.application.name}
+  client:
+    register-with-eureka: true #是否向服务注册中心注册自己
+    fetch-registry: true #是否检索服务
+    service-url:
+      defaultZone: http://admin:pass1234@localhost:8761/eureka/
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:8081/users/current
+    client:
+      id: client_2
+      client-secret: 123456
+      access-token-uri: http://localhost:8081/oauth/token
+      grant-type: client_credentials,password
+      scope: server
