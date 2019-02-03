@@ -15,9 +15,15 @@ eureka:
 zuul:
   ignored-services: '*' #忽略所有微服务
   routes:
-    mypro-core-log: /coreLogs/**
-    mypro-core-admin: /coreAdmins/**
-    mypro-auth-center: /authCenter/**
+    mypro-core-log:
+      path: /coreLogs/**
+      sensitiveHeaders:
+    mypro-core-admin:
+      path: /coreAdmins/**
+      sensitiveHeaders:
+    mypro-auth-center:
+      path: /authCenter/**
+      sensitiveHeaders:
   host:
     socket-timeout-millis: 60000
     connect-timeout-millis: 60000
